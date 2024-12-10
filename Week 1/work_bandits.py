@@ -2,6 +2,7 @@
 from bandits import Bandit
 import random
 import matplotlib.pyplot as plt
+import numpy as np
 # Include your imports here, if any are used. 
 
 
@@ -61,4 +62,79 @@ optimal_reward= 1000*max(bandit_mean)
 print(optimal_reward)
 regret = optimal_reward - avg
 print(regret)
-print(regret /optimal_reward *100 )
+print(f'{regret*100/optimal_reward} %')
+
+
+def run_epsilon_greedy(epsilon):
+    # TODO: Implement the epsilon greedy algorithm here
+    # Return the reward from the bandits in a list
+    bandit_rewards = [[] for i in range (n)]
+    for x in range(N):
+        i = random.random()
+        if i < epsilon:
+            bandit_num = random.randint(0,n-1)
+            bandit_rewards[bandit_num].append(bandits[bandit_num].pullLever())
+        else:
+            max_index=0
+            max_val = -10000
+            for j in range(n):
+                if len(bandit_rewards[j]):
+                    mean_val = sum(bandit_rewards[j])/len(bandit_rewards[j])
+                else:
+                    mean_val = 0
+                if mean_val>max_val:
+                    max_val = mean_val
+                    max_index = j
+            bandit_num = max_index
+            bandit_rewards[bandit_num].append(bandits[bandit_num].pullLever())
+            
+    return bandit_rewards
+
+
+cumulative_sum = []
+#the number of iterations - itr
+itr = 1000
+for x in range (itr):
+    bandit_rewards = run_epsilon_greedy(0.1)
+    sum_score = 0
+    for bandit in bandit_rewards:
+        for y in bandit:
+            sum_score+=y
+    cumulative_sum.append(sum_score)
+plt.hist(cumulative_sum,bins = 100)
+plt.title(f"Histogram of rewards over {itr} iterations")
+plt.show()
+sum_score = 0
+for score in cumulative_sum:
+    sum_score += score
+avg_epsilon = sum_score/itr
+print(avg_epsilon)
+
+
+regret_epsilon = optimal_reward - avg_epsilon
+print(regret_epsilon)
+print(f'{regret_epsilon*100/optimal_reward} %')
+
+epsilon_values= [i/100 for i in range(100)]
+cumulative_epsilon_sum = []
+for val in epsilon_values:
+    cumulative_sum = []
+    for x in range (1):
+        bandit_rewards = run_epsilon_greedy(val)
+        sum_score = 0
+        for bandit in bandit_rewards:
+            for y in bandit:
+                sum_score+=y
+        cumulative_sum.append(sum_score)
+    cumulative_sum_score = 0
+    for score in cumulative_sum:
+        cumulative_sum_score += score
+    avg_epsilon = cumulative_sum_score/10
+    cumulative_epsilon_sum.append(avg_epsilon)
+plt.plot(epsilon_values, cumulative_epsilon_sum)
+plt.xlabel("Epsilon Value")
+plt.ylabel("Cumulative Reward")
+plt.title("Cumulative Average Reward vs. Number of Iterations")
+plt.grid()
+plt.show()
+print(f'The reward is maximum at the value of epsilon {np.argmax(cumulative_epsilon_sum)/100}')
