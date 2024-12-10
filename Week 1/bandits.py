@@ -8,3 +8,6 @@ class Bandit:
     '''This method simulates pulling the lever of the bandit and returns the reward'''
     def pullLever(self):
         return np.random.normal(self.__mean, self.__stddev)
+    
+    def get_mean(self):
+        return self.__mean
