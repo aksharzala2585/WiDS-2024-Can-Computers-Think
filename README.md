@@ -38,17 +38,21 @@ Programming with Mosh: [Youtube](https://youtu.be/_uQrJ0TkZlc?si=gfn-7_-chO-J60h
 
 ### Resources for Numpy
 
-Numpy Tutorial - https://www.w3schools.com/python/numpy/default.asp
+Numpy Tutorial - [Numpy Official Website](https://numpy.org/doc/2.1/user/quickstart.html)
+
+
 
 ### Resources for Pandas
 
 Pandas Tutorial - https://youtu.be/vmEHCJofslg?si=1efKYTqQRdDECaNE
 
+Official Tutorials - https://pandas.pydata.org/pandas-docs/version/0.15/tutorials.html
+
 ### Resources for Matplotlib
 
 You can just look up what plot you want at that moment for matplotlib or 
 
-W3 schools - https://www.w3schools.com/python/matplotlib_intro.asp
+Official Tutorial - https://matplotlib.org/stable/tutorials/index.html
 
 ### Combined Resources
 
