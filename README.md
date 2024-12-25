@@ -69,3 +69,10 @@ You're going to implement the greedy and $\epsilon$-greedy algorithms and observ
 
 Read the Chapter in Sutton and Barto and implement the algorithms in the [work_on_bandits.ipynb](./Week%201/work_on_bandits.ipynb) file
 
+## Week 2:
+
+- The assignment in `Assignment_2.ipynb` is about simple modelling of some basic RL environment which is to help you understand the basic working of MDPs. Note that most problems we work with using RL always have a MDP working under the hood, which we may or may not(most of the times) know. We will explore this in later weeks
+
+- The second is an **optional** reading assignment, [here](./Week%202/Markov_chains.pdf) which you can read if you intreseted in understanding and modelling of **Markov chains** in detail. Note that it requires some basic understanding of **probability, expected value and ranodom variables** so its ok if you don't understand in the beginning. Although it is important that you google these terms to get a baisc idea if you don't know them , as it will be used frequently in RL.
+
+
